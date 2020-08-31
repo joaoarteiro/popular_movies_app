@@ -40,7 +40,7 @@ public class DetailActivity extends AppCompatActivity {
     private FavoriteDbHelper favoriteDbHelper;
     private Movie favorite;
     private final AppCompatActivity activity = DetailActivity.this;
-    private static final String API_TOKEN = "your_api_token";
+    private static final String API_TOKEN = "your_api_key";
 
     Movie movie;
     String thumbnail, movieName, synopsis, rating, dateOfRelease;
@@ -140,7 +140,7 @@ public class DetailActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0){
-                    collapsingToolbarLayout.setTitle(getString(R.string.details));
+                    collapsingToolbarLayout.setTitle(movie.getTitle());
                     isShow = true;
                 }else if (isShow){
                     collapsingToolbarLayout.setTitle(" ");

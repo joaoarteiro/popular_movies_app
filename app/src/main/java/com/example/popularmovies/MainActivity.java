@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private RecyclerView recyclerView;
     private MoviesAdapter adapter;
     private List<Movie> movieList;
-    private static final String API_TOKEN = "your_api_token";
+    private static final String API_TOKEN = "your_api_key";
     private SwipeRefreshLayout swipeContainer;
     private FavoriteDbHelper favoriteDbHelper;
     private AppCompatActivity activity = MainActivity.this;
