@@ -25,9 +25,15 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DetailActivity"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".SearchActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".SearchActivity"
+            android:launchMode="singleTop"
+            android:label="@string/search"
+            android:parentActivityName=".MainActivity" />
+
 
 
     </application>

@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">PopularMovies</string>
+    <string name="app_name">Popular Movies</string>
     <string name="settings">Settings</string>
     <string name="details">Details</string>
     <string name="sort_order">Order preferences</string>
     <string name="action_settings">Settings</string>
-    <string name="search">Search</string>
     <string name="action_search">Search</string>
     <string name="name_movie">Movie Title</string>
     <string name="plot">Plot Synopsis</string>
@@ -28,5 +27,6 @@
     <string name="sorting_popular_msg">Sorting by most popular</string>
     <string name="sorting_rating_msg">Sorting by rating</string>
     <string name="sorting_favorite_msg">Sorting by favorite!</string>
+    <string name="search">Search</string>
 
 </resources>
