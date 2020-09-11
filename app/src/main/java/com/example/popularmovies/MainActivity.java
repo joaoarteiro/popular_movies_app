@@ -2,6 +2,7 @@ package com.example.popularmovies;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.os.Bundle;
@@ -20,6 +23,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Toast;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
@@ -35,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private SwipeRefreshLayout swipeContainer;
     private FavoriteDbHelper favoriteDbHelper;
     private AppCompatActivity activity = MainActivity.this;
+    private SearchView search;
     public static final String LOG_TAG = MoviesAdapter.class.getName();
 
 
@@ -57,15 +63,15 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initViews();
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.main_content);
         swipeContainer.setColorSchemeResources(android.R.color.holo_green_light);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 initViews();
-                Toast.makeText(MainActivity.this, "Movies Refreshed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Movies Refreshed!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -76,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
        // TestAdapter testAdapter = new TestAdapter(LayoutInflater.from(this));
        // recyclerView.setAdapter(testAdapter);
        // testAdapter.setMovie(movieList);
+
+
 
 
     }
@@ -117,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             @Override
             public void onRefresh(){
                 initViews();
-                Toast.makeText(MainActivity.this, "Movies Refreshed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Movies Refreshed!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -218,6 +226,22 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main, menu);
+        SearchView search = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
         return true;
     }
 
@@ -264,7 +288,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         if (movieList.isEmpty()){
             checkSortOrder();
         }else{
-
             checkSortOrder();
         }
     }
