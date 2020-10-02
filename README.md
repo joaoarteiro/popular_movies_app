@@ -10,7 +10,7 @@ This is an on-going project, I have more features planned.
 In order to use this app, you need to request a personal api-key. It's a simple process, check [The Movie Database API](https://www.themoviedb.org/documentation/api).
 
 Next you need to paste your key in TWO source classes.
-First is MainActivity.java and second is DetailActvity.java
+First is MainActivity.java and second is DetailActivity.java
 
 Let's use MainActivity as example:
 
