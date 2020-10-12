@@ -1,6 +1,6 @@
 # Popular Movies
 
-Popular Movies is an android app to show a set of movies organized in cards. This app fetches data from The Movie Database API Features include search by title, order by rating and trending.
+Popular Movies is an android app to show a set of movies organized in cards. This app fetches data from The Movie Database API. Features include search by title, order by rating and trending.
 
 This is an on-going project, I have more features planned.
 
